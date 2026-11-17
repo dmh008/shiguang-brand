@@ -1,0 +1,26 @@
+<view class="page" wx:if="{{plan}}">
+  <view class="hero">
+    <view class="brand" style="font-size:40rpx;">{{plan.title}}</view>
+    <view class="lede">{{plan.startDate}} → {{plan.endDate}} · {{plan.status}}</view>
+  </view>
+
+  <view class="banner {{source === 'api' ? 'live' : ''}}">{{modeText}}</view>
+
+  <view class="section-title">计划餐次</view>
+  <view wx:if="{{!items.length}}" class="empty">暂无条目</view>
+  <view class="list-item" wx:for="{{items}}" wx:key="id" data-rid="{{item.recipeId}}" bindtap="openRecipe">
+    <view class="row-between">
+      <view>
+        <view class="pill">{{item.mealType}}</view>
+        <view style="margin-top:12rpx;font-weight:600;">{{item.title}}</view>
+        <view class="muted" style="font-size:24rpx;margin-top:4rpx;">
+          {{item.plannedDate}} · {{item.cookTime || '-'}} 分钟 · {{item.status}}
+        </view>
+      </view>
+      <view style="text-align:right;font-size:24rpx;">
+        <view>{{item.nutrition.calories || '-'}} kcal</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="page empty" wx:else>加载中…</view>

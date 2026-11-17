@@ -1,0 +1,46 @@
+<view class="page">
+  <view class="hero">
+    <view class="brand" style="font-size:40rpx;">我的</view>
+    <view class="lede">配置后端地址与登录 token；默认 mock，无需密钥即可预览。</view>
+  </view>
+
+  <view class="banner {{!forceMock && apiBaseUrl ? 'live' : ''}}">
+    当前：{{forceMock || !apiBaseUrl ? '演示数据（mock）' : '尝试连接后端'}}
+  </view>
+
+  <view class="field">
+    <view class="field-label">API Base URL（Go 网关，如 http://127.0.0.1:9090）</view>
+    <input class="field-input" value="{{apiBaseUrl}}" placeholder="留空则强制 mock" bindinput="onBaseUrl" />
+  </view>
+
+  <view class="field">
+    <view class="field-label">JWT Token（登录后粘贴；也可下方账号登录）</view>
+    <input class="field-input" value="{{token}}" placeholder="Bearer 内容，不含 Bearer 前缀" bindinput="onToken" />
+  </view>
+
+  <view class="row-between" style="margin: 12rpx 0 28rpx;">
+    <view>强制使用 mock</view>
+    <switch checked="{{forceMock}}" bindchange="onForceMock" color="#b45309" />
+  </view>
+
+  <view class="btn" bindtap="save">保存连接设置</view>
+
+  <view class="section-title">账号登录（对接 /api/v1/auth/login）</view>
+  <view class="field">
+    <view class="field-label">账号（邮箱/手机/用户名）</view>
+    <input class="field-input" value="{{identifier}}" bindinput="onId" />
+  </view>
+  <view class="field">
+    <view class="field-label">密码</view>
+    <input class="field-input" password value="{{password}}" bindinput="onPassword" />
+  </view>
+  <view class="btn btn-accent" bindtap="doLogin">登录并写入 token</view>
+  <view class="btn btn-secondary" bindtap="clearAuth">清除 token</view>
+
+  <view class="section-title">说明</view>
+  <view class="muted" style="font-size:24rpx;">
+    · 微信小程序真机请求需在公众平台配置合法 request 域名；开发者工具可关闭域名校验。
+    · AppID 在 project.config.json，占位 touristappid；正式预览请换成你的小程序 AppID。
+    · 营养与 AI 输出仅供日常参考，不能替代医疗建议。
+  </view>
+</view>

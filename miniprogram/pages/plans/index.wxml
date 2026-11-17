@@ -1,0 +1,57 @@
+<view class="page">
+  <view class="hero">
+    <view class="brand" style="font-size:40rpx;">计划与菜谱</view>
+    <view class="lede">看本周餐计划，或从菜谱库挑下一顿。</view>
+  </view>
+
+  <view class="banner {{source === 'api' ? 'live' : ''}}">{{modeText}}</view>
+
+  <view class="segment">
+    <view class="seg {{tab === 'plans' ? 'on' : ''}}" data-tab="plans" bindtap="switchTab">餐计划</view>
+    <view class="seg {{tab === 'recipes' ? 'on' : ''}}" data-tab="recipes" bindtap="switchTab">菜谱</view>
+  </view>
+
+  <block wx:if="{{tab === 'plans'}}">
+    <view wx:if="{{loading}}" class="empty">加载中…</view>
+    <view wx:elif="{{!plans.length}}" class="empty">暂无餐计划</view>
+    <view
+      class="list-item"
+      wx:for="{{plans}}"
+      wx:key="id"
+      data-id="{{item.id}}"
+      bindtap="openPlan"
+    >
+      <view class="row-between">
+        <view>
+          <view style="font-weight:600;">{{item.title}}</view>
+          <view class="muted" style="font-size:24rpx;margin-top:6rpx;">
+            {{item.startDate}} → {{item.endDate}} · {{item.status}}
+          </view>
+        </view>
+        <view class="pill">{{item.itemCount}} 餐</view>
+      </view>
+    </view>
+  </block>
+
+  <block wx:else>
+    <view wx:if="{{loading}}" class="empty">加载中…</view>
+    <view wx:elif="{{!recipes.length}}" class="empty">暂无菜谱</view>
+    <view
+      class="list-item"
+      wx:for="{{recipes}}"
+      wx:key="id"
+      data-id="{{item.id}}"
+      bindtap="openRecipe"
+    >
+      <view class="row-between">
+        <view style="flex:1;padding-right:16rpx;">
+          <view style="font-weight:600;">{{item.title}}</view>
+          <view class="muted" style="font-size:24rpx;margin-top:6rpx;">
+            {{item.cook_time}} 分钟 · {{item.difficulty}} · {{item.calories}} kcal
+          </view>
+        </view>
+        <view class="pill">{{item.category || '菜谱'}}</view>
+      </view>
+    </view>
+  </block>
+</view>
