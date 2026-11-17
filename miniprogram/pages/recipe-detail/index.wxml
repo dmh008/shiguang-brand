@@ -1,0 +1,31 @@
+<view class="page" wx:if="{{recipe}}">
+  <view class="hero">
+    <view class="brand" style="font-size:40rpx;">{{recipe.title}}</view>
+    <view class="lede">{{recipe.description}}</view>
+  </view>
+
+  <view class="banner {{source === 'api' ? 'live' : ''}}">{{modeText}}</view>
+
+  <view class="stat-grid">
+    <view class="stat"><view class="stat-inner"><view class="stat-value">{{recipe.cook_time}}</view><view class="stat-label">分钟</view></view></view>
+    <view class="stat"><view class="stat-inner"><view class="stat-value">{{recipe.calories}}</view><view class="stat-label">kcal</view></view></view>
+    <view class="stat"><view class="stat-inner"><view class="stat-value">{{recipe.protein}}</view><view class="stat-label">蛋白 g</view></view></view>
+    <view class="stat"><view class="stat-inner"><view class="stat-value">{{recipe.difficulty}}</view><view class="stat-label">难度</view></view></view>
+  </view>
+
+  <view class="section-title">食材</view>
+  <view class="list-item" wx:for="{{recipe.ingredients}}" wx:key="name">
+    <view class="row-between">
+      <text>{{item.name}}</text>
+      <text class="muted">{{item.amount}}</text>
+    </view>
+  </view>
+
+  <view class="section-title">步骤</view>
+  <view class="list-item" wx:for="{{recipe.steps}}" wx:key="*this" wx:for-index="idx">
+    <view><text class="pill">{{idx + 1}}</text> <text style="margin-left:12rpx;">{{item}}</text></view>
+  </view>
+
+  <view class="btn btn-accent" bindtap="logFromRecipe">记为今日一餐</view>
+</view>
+<view class="page empty" wx:else>加载中或未找到菜谱</view>

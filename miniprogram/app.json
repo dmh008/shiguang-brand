@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/nutrition/index",
+    "pages/plans/index",
+    "pages/profile/index",
+    "pages/diet-log/index",
+    "pages/recipe-detail/index",
+    "pages/meal-plan-detail/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#1c1917",
+    "navigationBarTitleText": "食光烙记",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f5f0e8",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#78716c",
+    "selectedColor": "#b45309",
+    "backgroundColor": "#fffaf3",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "今日",
+        "iconPath": "assets/tab/home.png",
+        "selectedIconPath": "assets/tab/home-active.png"
+      },
+      {
+        "pagePath": "pages/nutrition/index",
+        "text": "营养",
+        "iconPath": "assets/tab/nutrition.png",
+        "selectedIconPath": "assets/tab/nutrition-active.png"
+      },
+      {
+        "pagePath": "pages/plans/index",
+        "text": "计划",
+        "iconPath": "assets/tab/plans.png",
+        "selectedIconPath": "assets/tab/plans-active.png"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的",
+        "iconPath": "assets/tab/profile.png",
+        "selectedIconPath": "assets/tab/profile-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

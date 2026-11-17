@@ -1,0 +1,44 @@
+<view class="page">
+  <view class="hero">
+    <view class="brand">食光烙记</view>
+    <view class="lede">把今天吃了什么记清楚，营养与下一顿才有据可依。</view>
+  </view>
+
+  <view class="banner {{source === 'api' ? 'live' : ''}}">{{modeText}} · {{today}}</view>
+
+  <view class="stat-grid">
+    <view class="stat">
+      <view class="stat-inner">
+        <view class="stat-value">{{summary.calories}}</view>
+        <view class="stat-label">今日热量 kcal</view>
+      </view>
+    </view>
+    <view class="stat">
+      <view class="stat-inner">
+        <view class="stat-value">{{summary.count}}</view>
+        <view class="stat-label">已记餐次</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="btn btn-accent" bindtap="goLog">记一餐</view>
+
+  <view class="section-title">今日记录</view>
+  <view wx:if="{{loading}}" class="empty">加载中…</view>
+  <view wx:elif="{{!records.length}}" class="empty">还没有记录，点上面记一餐开始。</view>
+  <block wx:else>
+    <view class="list-item" wx:for="{{records}}" wx:key="id">
+      <view class="row-between">
+        <view>
+          <view class="pill">{{item.mealLabel}}</view>
+          <view style="margin-top:12rpx;font-weight:600;">{{item.food_name}}</view>
+          <view class="muted" style="font-size:24rpx;margin-top:4rpx;">{{item.amount}} · {{item.timeLabel}}</view>
+        </view>
+        <view style="text-align:right;">
+          <view style="font-weight:700;">{{item.calories || 0}}</view>
+          <view class="muted" style="font-size:22rpx;">kcal</view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

@@ -66,6 +66,7 @@
 | 目录 | 技术 | 说明 |
 | --- | --- | --- |
 | `client/` | Expo 54、React Native、Expo Router、Uniwind | iOS / Android / Web |
+| `miniprogram/` | 原生微信小程序 | 饮食记录 / 营养 / 菜谱与餐计划；默认 mock，可对接 Go API |
 | `server-go/` | Go、Gin | 默认 API 与已迁移业务路由 |
 | `server/` | Express、TypeScript、SQLite / PostgreSQL | 可选上游与迁移对照 |
 | `admin/` | React、Vite、Tailwind | 运营与系统管理 |
@@ -75,6 +76,7 @@
 ```text
 DietDigiDose/
 ├── client/       # Expo 客户端
+├── miniprogram/  # 微信小程序（原生，见该目录 README）
 ├── server-go/    # Go API（:9090）
 ├── server/       # Express（可选 :9091）
 ├── admin/        # 管理后台

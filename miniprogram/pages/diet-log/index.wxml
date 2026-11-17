@@ -1,0 +1,42 @@
+<view class="page">
+  <view class="lede" style="margin-bottom:28rpx;">写入今日饮食记录（对齐 POST /api/v1/diet-records）。</view>
+
+  <view class="field">
+    <view class="field-label">餐次</view>
+    <picker mode="selector" range="{{mealTypes}}" value="{{mealIndex}}" bindchange="onMeal">
+      <view class="picker-value">{{mealTypes[mealIndex]}}</view>
+    </picker>
+  </view>
+
+  <view class="field">
+    <view class="field-label">食物名称</view>
+    <input class="field-input" value="{{food_name}}" placeholder="例如：番茄炒蛋" bindinput="onFood" />
+  </view>
+
+  <view class="field">
+    <view class="field-label">份量</view>
+    <input class="field-input" value="{{amount}}" placeholder="1 份 / 200g" bindinput="onAmount" />
+  </view>
+
+  <view class="field">
+    <view class="field-label">热量 kcal</view>
+    <input class="field-input" type="digit" value="{{calories}}" bindinput="onCal" />
+  </view>
+
+  <view class="row" style="gap:16rpx;">
+    <view class="field" style="flex:1;">
+      <view class="field-label">蛋白质 g</view>
+      <input class="field-input" type="digit" value="{{protein}}" bindinput="onP" />
+    </view>
+    <view class="field" style="flex:1;">
+      <view class="field-label">碳水 g</view>
+      <input class="field-input" type="digit" value="{{carbs}}" bindinput="onC" />
+    </view>
+    <view class="field" style="flex:1;">
+      <view class="field-label">脂肪 g</view>
+      <input class="field-input" type="digit" value="{{fat}}" bindinput="onF" />
+    </view>
+  </view>
+
+  <view class="btn btn-accent" bindtap="submit">保存</view>
+</view>
